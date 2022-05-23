@@ -1,0 +1,30 @@
+Simple rest rever supporting 
+made with:
+	restlet framework https://restlet.talend.com/
+	json https://github.com/stleary/JSON-java
+	jdbc driver for java https://mariadb.com/kb/en/about-mariadb-connector-j/
+
+---requirements
+to be able to run program requried are:
+	mariadb mysql server
+		can be instaled through basic debian repository
+			sudo apt-get install mariadb-server
+		server needs to be runing
+			service mysql start
+	curl
+		can be installed same way
+			sudo apt-get install curl
+	java
+		can be installed same way or downloaded from oracle
+			sudo apt-get install default-jdk
+---setup
+	for simplicity ther is only one script that needs to be run for setup
+		./setup
+	script compiles program, creates db and populates it, additionally reates new user that will be used to connect to it and perform tests
+---running
+	script ./run & starts server in the baskground , take note of pid for easy termination of this process with kill (pid), but if it falis kill %% works better
+---testing
+	script ./test_requests runs use case
+	
+also:
+	i was a litte short on time so some things might not be as polished as possible, especially readability. I have additionally included docer file with setup environment, as i was using docker during development, all source files are in /home.

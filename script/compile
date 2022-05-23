@@ -1,0 +1,4 @@
+#!/bin/bash
+
+javac -encoding UTF-8 -cp './lib/org.restlet.jar:./lib/json-20220320.jar:./lib/mariadb-java-client-3.0.4.jar:./src' -d './bin' ./src/*.java
+

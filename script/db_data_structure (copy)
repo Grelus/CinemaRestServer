@@ -1,0 +1,36 @@
+#!/bin/bash
+
+mysql -e "create database cinema_db"
+
+mysql -e "create table cinema_db.screening
+(id int auto_increment not null,
+starting_time datetime not null,
+movie_id int not null,
+room_id int not null,
+primary key(id));"
+
+mysql -e "create table cinema_db.movie
+(id int auto_increment not null,
+name varchar(32) not null,
+duration time not null,
+primary key(id));"
+
+mysql -e "create table cinema_db.room
+(id int auto_increment not null,
+row_quantity int not null,
+row_length int not null,
+primary key(id));"
+
+mysql -e "create table cinema_db.reservation
+(id int auto_increment not null,
+seat_no int not null,
+type varchar(1) not null,
+reservation_info_id int not null,
+screening_id int not null,
+primary key(id));"
+
+mysql -e "create table cinema_db.reservation_info
+(id int auto_increment not null,
+name varchar(24) not null,
+surname varchar(24) not null,
+primary key(id));"

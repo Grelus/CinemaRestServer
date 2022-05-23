@@ -1,0 +1,41 @@
+#!/bin/bash
+
+mysql cinema_db -e "select * from screening;"
+
+mysql cinema_db -e "select * from room;"
+
+mysql cinema_db -e "select * from movie;"
+
+mysql cinema_db -e "select * from reservation;"
+
+mysql cinema_db -e "select * from reservation_info;"
+
+#screening by date
+mysql cinema_db -e "select screening.id, screening.starting_time, movie.name
+from screening
+join movie on screening.movie_id = movie.id
+where screening.starting_time > '2022-05-04 00:00:00' and
+screening.starting_time <= '2022-05-06 00:00:00';"
+
+#all screening data
+mysql cinema_db -e "select screening.id, screening.starting_time, movie.name, movie.duration, room.number, room.row_quantity, room.row_length 
+from screening
+join movie on screening.movie_id = movie.id
+join room on screening.room_id = room.id
+where screening.id = 1;"
+
+#reservations by screening
+mysql cinema_db -e "select screening.id, reservation.seat_no
+from reservation
+join screening on reservation.screening_id = screening.id
+where screening.id = 1;"
+
+#reserations by info
+
+mysql cinema_db -e "select reservation_info.name, reservation_info.surname, reservation.seat_no, reservation.type
+from reservation_info
+join reservation on reservation_info.id = reservation.reservation_info_id
+where reservation_info.id = 1;"
+
+#check last in order
+mysql -e "select id from cinema_db.reservation_info order by id DESC;"

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+./script/compile
+./script/usersetup
+./script/db_data_structure
+./script/db_test_data

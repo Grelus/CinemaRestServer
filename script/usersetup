@@ -1,0 +1,5 @@
+#!/bin/bash
+
+mysql -e "create user 'tester'@localhost identified by 'pass';"
+
+mysql -e "grant all privileges on *.* to 'tester'@'localhost' identified by 'pass';"
